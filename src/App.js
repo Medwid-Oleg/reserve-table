@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Layout from './components/Layout/Layout';
+import  HomePage  from './components/HomePage.jsx';
+import BookingPage from './components/BookingPage.jsx';
+import {Route, Routes, BrowserRouter } from 'react-router-dom';
+import ConfirmedBooking from './components/ConfirmedBooking.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="*" element={<h1>Page Not Found</h1>} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/confirmation" element={<ConfirmedBooking />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
